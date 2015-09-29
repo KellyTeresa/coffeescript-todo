@@ -17,8 +17,8 @@ $ ->
     render: =>
       $(@el).html """
         <span>#{@model.get 'text'}. Complete? #{@model.get 'completed'}.</span>
-        <span class="check">Check</span>
-        <span class="delete">Delete</span>
+        <span class="check button">Check</span>
+        <span class="delete button">Delete</span>
       """
       @
 
@@ -52,16 +52,19 @@ $ ->
       $(@el).append "<ol></ol>"
 
     addItem: ->
+      task_text = $('input[name="task"]').val()
       @counter++
       task = new Task
-      task.set text: "Hi #{@counter}"
+      task.set text: task_text
       @collection.add task
 
     appendItem: (task) ->
       task_view = new TaskView model: task
       $("ol").append task_view.render().el
 
-    events: "click button": "addItem"
+    events:
+      "click button": "addItem"
+
 
   Backbone.sync = (method, model, success, error) ->
     success()

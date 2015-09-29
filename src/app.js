@@ -52,7 +52,7 @@
       };
 
       TaskView.prototype.render = function() {
-        $(this.el).html("<span>" + (this.model.get('text')) + ". Complete? " + (this.model.get('completed')) + ".</span>\n<span class=\"check\">Check</span>\n<span class=\"delete\">Delete</span>");
+        $(this.el).html("<span>" + (this.model.get('text')) + ". Complete? " + (this.model.get('completed')) + ".</span>\n<span class=\"check button\">Check</span>\n<span class=\"delete button\">Delete</span>");
         return this;
       };
 
@@ -106,11 +106,12 @@
       };
 
       ListView.prototype.addItem = function() {
-        var task;
+        var task, task_text;
+        task_text = $('input[name="task"]').val();
         this.counter++;
         task = new Task;
         task.set({
-          text: "Hi " + this.counter
+          text: task_text
         });
         return this.collection.add(task);
       };
