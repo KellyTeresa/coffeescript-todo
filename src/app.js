@@ -96,7 +96,6 @@
       ListView.prototype.initialize = function() {
         this.collection = new TaskCollection;
         this.collection.bind("add", this.appendItem);
-        this.counter = 0;
         return this.render();
       };
 

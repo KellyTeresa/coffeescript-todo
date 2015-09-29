@@ -43,8 +43,6 @@ $ ->
     initialize: ->
       @collection = new TaskCollection
       @collection.bind "add", @appendItem
-
-      @counter = 0
       @render()
 
     render: ->
